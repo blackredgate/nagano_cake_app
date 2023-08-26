@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-  get 'top' => 'homes#top'
+    get 'top' => 'homes#top'
   end
   
   
-  get '/items' => 'items#index'
+  
+  resources :items, only:[:index, :show]
   
   root to: 'homes#top'
   get '/about' => 'homes#about'

@@ -27,17 +27,14 @@
               <% end %>
             </li>
           <% elsif customer_signed_in? %><%# ユーザーログイン時表示 %>
-            <li class="nav-item">
-              <%= link_to about_path, class: 'nav-link' do %>
-                About
-              <% end %>
-            </li>
+            <li class="nav-item">マイページ</li>
+            <li class="nav-item">商品一覧</li>
+            <li class="nav-item">カート</li>
             <li class="nav-item">
               <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
                 ログアウト
               <% end %>
             </li>
-            <li class="nav-item">商品一覧</li>
           <% else %><%# 管理者及びユーザーログイン前表示 %>
             <li class="nav-item">
               <%= link_to about_path, class: 'nav-link' do %>
@@ -45,13 +42,20 @@
               <% end %>
             </li>
             <li class="nav-item">商品一覧</li>
-            <li class="nav-item">新規登録</li>
+            
             <li class="nav-item">
               <%= link_to new_customer_registration_path, class: 'nav-link' do %>
+                新規登録
+              <% end %>
+            </li>
+            
+            <li class="nav-item">
+              <%= link_to new_customer_session_path, class: 'nav-link' do %>
                 ログイン
               <% end %>
             </li>
-          <% end%>
+            
+          <% end %>
           
             
           </ul>
