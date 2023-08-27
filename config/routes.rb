@@ -12,9 +12,13 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top'
   end
   
+  scope module: :public do
+    resources :items, only:[:index, :show]
+  end
   
-  
-  resources :items, only:[:index, :show]
+  get '/customers' => 'public/customers#show'
+  get '/customers/information/edit' => 'public/customers#edit'
+  patch '/customers' => 'public/customers#update'
   
   root to: 'homes#top'
   get '/about' => 'homes#about'

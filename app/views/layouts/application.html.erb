@@ -27,7 +27,11 @@
               <% end %>
             </li>
           <% elsif customer_signed_in? %><%# ユーザーログイン時表示 %>
-            <li class="nav-item">マイページ</li>
+            <li class="nav-item">
+              <%= link_to customers_path, class: 'nav-link' do %>
+                マイページ
+              <% end %>
+              </li>
             <li class="nav-item">商品一覧</li>
             <li class="nav-item">カート</li>
             <li class="nav-item">
@@ -67,7 +71,7 @@
     <%= yield %>
 
     <footer>
-      <div class="border-top">
+      <div class="border-top h-25">
       </div>
     </footer>
   </body>
