@@ -18,45 +18,35 @@
           
           <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %><%# 管理者ログイン時表示 %>
-            <li class="nav-item">商品一覧</li>
+            <li class="nav-item">
+              <%= link_to "商品一覧", admin_items_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item">会員一覧</li>
             <li class="nav-item">注文履歴一覧</li>
             <li class="nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
-                ログアウト
-              <% end %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% elsif customer_signed_in? %><%# ユーザーログイン時表示 %>
             <li class="nav-item">
-              <%= link_to customers_path, class: 'nav-link' do %>
-                マイページ
-              <% end %>
-              </li>
+              <%= link_to "マイページ", customers_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item">商品一覧</li>
             <li class="nav-item">カート</li>
             <li class="nav-item">
-              <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
-                ログアウト
-              <% end %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %><%# 管理者及びユーザーログイン前表示 %>
             <li class="nav-item">
-              <%= link_to about_path, class: 'nav-link' do %>
-                About
-              <% end %>
+              <%= link_to "About", about_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">商品一覧</li>
             
             <li class="nav-item">
-              <%= link_to new_customer_registration_path, class: 'nav-link' do %>
-                新規登録
-              <% end %>
+              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link' %>
             </li>
             
             <li class="nav-item">
-              <%= link_to new_customer_session_path, class: 'nav-link' do %>
-                ログイン
-              <% end %>
+              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link' %>
             </li>
             
           <% end %>
