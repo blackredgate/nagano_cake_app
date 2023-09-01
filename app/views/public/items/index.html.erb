@@ -1,1 +1,42 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <div class="row my-4">
+    <%= render 'homes/sidebar' %>
+    
+    <div class="col-md-8 offset-md-1">
+      <% @items.each do |item| %>
+        <div class="row my-4">
+          <div class="col-md-3">
+            <%= image_tag item.get_image(150,150) %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+          
+          <div class="col-md-3">
+            <%= image_tag item.get_image(150,150) %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+          
+          <div class="col-md-3">
+            <%= image_tag item.get_image(150,150) %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+          
+          <div class="col-md-3">
+            <%= image_tag item.get_image(150,150) %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+          
+          <div class="col-md-3">
+            <%= image_tag item.get_image(150,150) %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
