@@ -20,7 +20,7 @@
         <tr>
           <td class="table-active text-nowrap">会員ステータス</td>
           <td class="text-nowrap">
-            <% if customer.is_deleted == false %>
+            <% if @customer.is_deleted == false %>
               <p class="text-success"><string>有効</string></p>
             <% else %>
               <p class="text-muted"><string>退会</string></p>
