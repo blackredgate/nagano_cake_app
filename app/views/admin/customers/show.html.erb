@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-2">
+      <div>
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-md-8">
+      <p class="bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</p>
+      <table class="table table-borderless">
+        <tr><td class="table-active text-nowrap">氏名</td><td class="text-nowrap"><%= @customer.last_name %><%= "　" %><%= @customer.first_name %></td></tr>
+        <tr><td class="table-active text-nowrap">カナ</td><td class="text-nowrap"><%= @customer.last_name_kana %><%= "　" %><%= @customer.first_name_kana %></td></tr>
+        <tr><td class="table-active text-nowrap">郵便番号</td><td class="text-nowrap"><%= @customer.postal_code %></td></tr>
+        <tr><td class="table-active text-nowrap">住所</td><td class="text-nowrap"><%= @customer.address %></td></tr>
+        <tr><td class="table-active text-nowrap">電話番号</td><td class="text-nowrap"><%= @customer.telephone_number %></td></tr>
+        <tr><td class="table-active text-nowrap">メールアドレス</td><td class="text-nowrap"><%= @customer.email %></td></tr>
+        <tr>
+          <td class="table-active text-nowrap">会員ステータス</td>
+          <td class="text-nowrap">
+            <% if customer.is_deleted == false %>
+              <p class="text-success"><string>有効</string></p>
+            <% else %>
+              <p class="text-muted"><string>退会</string></p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="mx-5 d-inline-flex">
+        <div class="mx-5 text-nowrap">
+          <%= link_to edit_admin_customer_path(@customer.id), class: 'btn btn-success' do %>
+            編集する
+          <% end %>
+        </div>
+          
+        <div class="mx-5 text-nowrap">
+          <%= link_to customers_information_edit_path(@customer.id), class: 'btn btn-primary' do %>
+            注文履歴一覧を見る
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

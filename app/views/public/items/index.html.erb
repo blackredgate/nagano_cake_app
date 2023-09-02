@@ -1,36 +1,73 @@
 <div class="container">
   <div class="row my-4">
     <%= render 'homes/sidebar' %>
-    
+
     <div class="col-md-8 offset-md-1">
+      <h2>商品一覧</h2>
       <% @items.each do |item| %>
         <div class="row my-4">
           <div class="col-md-3">
-            <%= image_tag item.get_image(150,150) %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
             <%= item.name %>
             ￥<%= item.price %>
           </div>
-          
+
           <div class="col-md-3">
-            <%= image_tag item.get_image(150,150) %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
             <%= item.name %>
             ￥<%= item.price %>
           </div>
-          
+
           <div class="col-md-3">
-            <%= image_tag item.get_image(150,150) %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
             <%= item.name %>
             ￥<%= item.price %>
           </div>
-          
+
           <div class="col-md-3">
-            <%= image_tag item.get_image(150,150) %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
             <%= item.name %>
             ￥<%= item.price %>
           </div>
-          
+        </div>
+
+        <div class="row my-4">
           <div class="col-md-3">
-            <%= image_tag item.get_image(150,150) %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+
+          <div class="col-md-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+
+          <div class="col-md-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
+            <%= item.name %>
+            ￥<%= item.price %>
+          </div>
+
+          <div class="col-md-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(150,150) %>
+            <% end %>
             <%= item.name %>
             ￥<%= item.price %>
           </div>
