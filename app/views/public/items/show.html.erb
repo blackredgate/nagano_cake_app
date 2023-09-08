@@ -12,7 +12,7 @@
         <div class="col-md-6">
           <h3><%= @item.name %></h3>
           <p><%= @item.introduction %></p>
-          <p>￥　<%= number_with_delimiter((@item.price * 1.08).round) %>(税込)</p>
+          <p>￥　<%= number_with_delimiter((@item.price * 1.1).round) %>(税込)</p>
 
           <div class="d-inline-flex">
             <%= form_with model: @cart_item, url: '/cart_items', method: :post do |f| %>
