@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-8">
+      <p class="bg-secondary">注文履歴詳細</p>
+      <table class="table table-borderless">
+        <tr><td class="table-active text-nowrap">購入者</td><td class="text-nowrap"><%= @customer.last_name %><%= "　" %><%= @customer.first_name %></td></tr>
+        <tr><td class="table-active text-nowrap">注文日</td><td class="text-nowrap"><%= @customer.last_name_kana %><%= "　" %><%= @customer.first_name_kana %></td></tr>
+        <tr><td class="table-active text-nowrap">配送先</td><td class="text-nowrap"><%= @customer.postal_code %></td></tr>
+        <tr><td class="table-active text-nowrap">支払方法</td><td class="text-nowrap"><%= @customer.address %></td></tr>
+        <tr><td class="table-active text-nowrap">注文ステータス</td><td class="text-nowrap"><%= @customer.telephone_number %></td></tr>
+        <tr>
+          <td class="table-active text-nowrap">会員ステータス</td>
+          <td class="text-nowrap">
+            <% if @customer.is_deleted == false %>
+              <p class="text-success"><string>有効</string></p>
+            <% else %>
+              <p class="text-muted"><string>退会</string></p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
