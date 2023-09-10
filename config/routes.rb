@@ -13,12 +13,16 @@ Rails.application.routes.draw do
     resources :items
     resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:show, :update]
+    resources :order_details, only:[:update]
   end
 
   scope module: :public do
     resources :items, only:[:index, :show]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only:[:index, :update, :destroy, :create]
+    post '/orders/confim' => 'public/orders#confim'
+    get '/orders/complete' => 'public/orders#complete'
+    resources :orders, only:[:new, :create, :index, :show]
   end
 
   get '/customers' => 'public/customers#show'

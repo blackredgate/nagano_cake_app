@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p class="text-center bg-secondary">注文情報確認</p>
+    </div>
+  </div>
+  
+  <div class="row my-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>商品名</td>
+            <td>単価(税込)</td>
+            <td>数量</td>
+            <td>小計</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <%= @cart_items.each do |cart_item| %>
+            <td><%= image_tag cart_item.item.get_image(100,100) %><%= "　" %><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal %></td>
+            <% @total += cart_item.subtotal %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <table class="table">
+        <tr><td>送料</td><td><%= @order.postage %></td></tr>
+        <tr><td>商品合計</td><td><%= @total %></td></tr>
+        <tr><td>請求金額</td><td><%= @total + @order.postage %></td></tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row my-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p><strong>支払方法</strong></p>
+    </div>
+    <div class="col-md-2"><%= @order.payment_method %></div>
+  </div>
+  
+  <div class="row my-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p><strong>お届け先</strong></p>
+    </div>
+    <div class="col-md-2 text-nowrap">
+      <%= @shipping_postal_code %>
+      <%= @shipping_address %>
+      <%= @shipping_name %>
+    </div>
+  </div>
+</div>
