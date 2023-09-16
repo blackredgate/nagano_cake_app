@@ -5,7 +5,7 @@
       <p class="text-center bg-secondary">注文情報確認</p>
     </div>
   </div>
-  
+
   <div class="row my-4">
     <div class="col-md-1"></div>
     <div class="col-md-6">
@@ -20,18 +20,18 @@
         </thead>
         <tbody>
           <tr>
-            <%= @cart_items.each do |cart_item| %>
-            <td><%= image_tag cart_item.item.get_image(100,100) %><%= "　" %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.subtotal %></td>
+            <% @cart_items.each do |cart_item| %>
+              <td><%= image_tag cart_item.item.get_image(100,100) %><%= "　" %><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
             <% @total += cart_item.subtotal %>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div>
-    
+
     <div class="col-md-1"></div>
     <div class="col-md-4">
       <table class="table">
@@ -41,24 +41,24 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row my-4">
     <div class="col-md-1"></div>
     <div class="col-md-2">
       <p><strong>支払方法</strong></p>
     </div>
-    <div class="col-md-2"><%= @order.payment_method %></div>
+    <div class="col-md-2"><%= @order.payment_method_i18n %></div>
   </div>
-  
+
   <div class="row my-4">
     <div class="col-md-1"></div>
     <div class="col-md-2">
       <p><strong>お届け先</strong></p>
     </div>
     <div class="col-md-2 text-nowrap">
-      <%= @shipping_postal_code %>
-      <%= @shipping_address %>
-      <%= @shipping_name %>
+      <p>〒<%= @order.shipping_postal_code %></p>
+      <p><%= @order.shipping_address %></p>
+      <p><%= @order.shipping_name %></p>
     </div>
   </div>
 </div>

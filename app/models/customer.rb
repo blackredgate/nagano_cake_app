@@ -14,4 +14,5 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   
   has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end

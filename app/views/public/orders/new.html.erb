@@ -7,18 +7,22 @@
   </div>
 
   <div class="row my-4">
+    <%= form_with model: @order, url: orders_confirm_path do |f| %>
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <div class="row my-3">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-          <%= form_with model: @order do |f| %>
             <p><strong>支払方法</strong></p>
             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
             <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
             <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
-          <% end %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :postage, :value => 800 %>
+            <%= f.hidden_field :shipping_name, :value => current_customer.last_name + current_customer.first_name %>
+            <%= f.hidden_field :shipping_postal_code, :value => current_customer.postal_code %>
+            <%= f.hidden_field :shipping_address, :value => current_customer.address %>
         </div>
       </div>
 
@@ -26,18 +30,19 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <p><strog>お届け先</strog></p>
-          <%= @customer.postal_code %>
-          <%= @customer.address %>
+          <p>ご自身の住所</p>
+          <%= current_customer.postal_code %>
+          <%= current_customer.address %>
         </div>
       </div>
-      
+
       <div class="row my-3">
         <div class="col-md-5"></div>
         <div class="col-md-4">
-          <%= link_to "確認画面に進む", orders_confim_path, class:'btn btn-sm btn-primary' %>
+          <%= f.submit "確認画面に進む", class: 'btn btn-sm btn-primary' %>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-
 </div>

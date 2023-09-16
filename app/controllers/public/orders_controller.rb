@@ -1,17 +1,16 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @customer = current_customer
   end
 
-  def comfim
+  def confirm
     @order = Order.new(order_params)
-    @order.postage = 800
-    @cart_items = current_customer.cart_items.all
-    @total = 0
-    @shipping_postal_code = current_customer.postal_code
-    @shipping_address = current_customer.address
-    @shipping_name = current_customer.name
+    if @order.payment_method.present?
+      @cart_items = current_customer.cart_items.all
+      @total = 0
+    else
+      render :new
+    end
   end
 
   def complete
@@ -19,7 +18,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save
+      redirect_to orders_complete_path
+    else
+      render :confirm
+    end
   end
 
   def index
@@ -29,9 +34,9 @@ class Public::OrdersController < ApplicationController
   def show
 
   end
-  
+
   private
   def order_params
-    params.require(:order).permit(:payment_metods)
+    params.require(:order).permit(:customer_id, :payment_method, :postage, :shipping_name, :shipping_postal_code, :shipping_address)
   end
 end

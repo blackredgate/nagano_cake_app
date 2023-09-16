@@ -28,6 +28,11 @@
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
+            <td><%= image_tag order_detail.cart_item.item.get_image(100,100) %><%= "　" %><%= order_detail.cart_item.item.name %></td>
+            <td><%= order_detail.cart_item.item.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.cart_item.subtotal %></td>
+            <% @total += order_detail.cart_item.subtotal %>
           <% end %>
         </tbody>
       </table>
