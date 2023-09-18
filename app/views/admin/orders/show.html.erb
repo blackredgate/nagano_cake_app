@@ -4,18 +4,18 @@
     <div class="col-md-8">
       <p class="bg-secondary">注文履歴詳細</p>
       <table class="table table-borderless">
-        <tr><td class="table-active text-nowrap">購入者</td><td class="text-nowrap"><%= @customer.last_name %><%= " " %><%= @customer.first_name %></td></tr>
+        <tr><td class="table-active text-nowrap">購入者</td><td class="text-nowrap"><%= @order.customer.last_name %><%= " " %><%= @order.customer.first_name %></td></tr>
         <tr><td class="table-active text-nowrap">注文日</td><td class="text-nowrap"><%= @order.created_at %></td></tr>
-        <tr><td class="table-active text-nowrap">配送先</td><td class="text-nowrap"><%= @customer.postal_code %><%= " " %><%= @customer.address %></td></tr>
-        <tr><td class="table-active text-nowrap">支払方法</td><td class="text-nowrap"><%= @order.payment_method %></td></tr>
+        <tr><td class="table-active text-nowrap">配送先</td><td class="text-nowrap"><%= @order.shipping_postal_code %><%= " " %><%= @order.shipping_address %><br><%= @order.shipping_name %></td></tr>
+        <tr><td class="table-active text-nowrap">支払方法</td><td class="text-nowrap"><%= @order.payment_method_i18n %></td></tr>
         <tr><td class="table-active text-nowrap">注文ステータス</td></tr>
       </table>
     </div>
   </div>
-  
+
   <div class="row my-4">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
       <table class="table">
         <thead>
           <tr>
@@ -28,12 +28,31 @@
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
-            <td><%= image_tag order_detail.cart_item.item.get_image(100,100) %><%= "　" %><%= order_detail.cart_item.item.name %></td>
-            <td><%= order_detail.cart_item.item.with_tax_price %></td>
-            <td><%= order_detail.amount %></td>
-            <td><%= order_detail.cart_item.subtotal %></td>
-            <% @total += order_detail.cart_item.subtotal %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price_including_tax %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.price_including_tax * order_detail.amount %></td>
+              <% @total += (order_detail.price_including_tax * order_detail.amount) %>
+              <td></td>
+            </tr>
           <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @total %></td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.postage %></td>
+          </tr>
+            <td>請求金額合計</td>
+            <td><%= @total + @order.postage %></td>
         </tbody>
       </table>
     </div>

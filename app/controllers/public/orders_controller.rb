@@ -14,13 +14,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
   end
 
   def create
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    if @order.save!
+    if @order.save
       @cart_items.each do |cart_item|
         order_detail = OrderDetail.new
         order_detail.item_id = cart_item.item_id
