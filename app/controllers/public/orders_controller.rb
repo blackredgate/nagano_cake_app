@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
-        order_detail.price_including_tax = cart_item.subtotal
+        order_detail.price_including_tax = cart_item.item.with_tax_price
         order_detail.save
       end
       redirect_to orders_complete_path
@@ -42,6 +42,11 @@ class Public::OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
+     @order_details = @order.order_details
+     @total = 0
+     @order_details.each do |order_detail|
+      @total += order_detail.price_including_tax * order_detail.amount
+     end
   end
 
   private

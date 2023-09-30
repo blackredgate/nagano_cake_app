@@ -4,8 +4,8 @@
 
     <div class="col-md-8 offset-md-1">
       <h2>商品一覧</h2>
-      <% @items.each do |item| %>
-        <div class="row my-4">
+      <div class="row my-4">
+        <% @items.each do |item| %>
           <div class="col-md-3">
             <%= link_to item_path(item.id) do %>
               <%= image_tag item.get_image(100,100) %>
@@ -13,66 +13,8 @@
             <p><%= item.name %></p>
             <p>￥<%= item.price %></p>
           </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-        </div>
-
-        <div class="row my-4">
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-
-          <div class="col-md-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100) %>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>￥<%= item.price %></p>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <%= paginate @items %>
     </div>
   </div>

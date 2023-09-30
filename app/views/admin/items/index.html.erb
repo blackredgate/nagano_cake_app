@@ -4,8 +4,16 @@
     <div class="col-md-2">
       <p class="text-center bg-secondary">商品一覧</p>
     </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+      <h3>
+        <%= link_to new_admin_item_path, class: 'text-dark' do %>
+          +
+        <% end %>
+      </h3>
+    </div>
   </div>
-  
+
   <div class="row my-4">
     <div class="col-md-10">
       <table class="table">
@@ -31,7 +39,7 @@
           <%= paginate @items %>
         </tbody>
       </table>
-      
+
     </div>
   </div>
 </div>
