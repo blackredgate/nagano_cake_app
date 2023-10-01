@@ -15,7 +15,7 @@
         <div class="col-md-10">
             <p><strong>支払方法</strong></p>
             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
             <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
